@@ -98,6 +98,25 @@ plot(fit1, which = 1, xlab = "dev year", ylab = "cum loss",
 plot(fit1, which = 2, xlab = "dev year", ylab = "cum loss",
      main = "Full Triangle")
 
+# 5. nnet -- Neural Network model (reproduces ChainLadder estimates)
+fit_func <- function(x, y, ...)
+{
+  df <- data.frame(y=y, x) # naming of columns is mandatory for `predict`
+  colnames(df) <- c("y", "origin", "dev")
+  nnet::nnet(y ~ factor(origin) + factor(dev), data=df, size = 15, ...)
+}
+
+predict_func <- function(obj, newx)
+{
+  colnames(newx) <- c("origin", "dev") # mandatory, linked to df in fit_func
+  predict(obj, newx) # only accepts a named newx
+}
+
+fit1 <- ChainLadder::mlReserve(GenIns, fit_func = fit_func, 
+                               predict_func = predict_func)
+print("nnet model results:")
+summary(fit1)
+summary(fit1, type = "model")   # extract the underlying glm
 
 # Optional: Bootstrap example (commented out as it takes longer)
 # set.seed(11)
