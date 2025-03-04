@@ -10,7 +10,7 @@ GenIns <- GenIns / 1000
 fit1 <- ChainLadder::mlReserve(GenIns, fit_func = stats::glm)
 print("GLM model results:")
 summary(fit1)
-summary(fit1, type = "model")   # extract the underlying glm
+summary(fit1, type = "model")   
 
 # Visualize results
 par(mfrow = c(1, 2))
@@ -25,7 +25,7 @@ plot(fit1, which = 2, xlab = "dev year", ylab = "cum loss",
 fit1 <- ChainLadder::mlReserve(GenIns, fit_func = e1071::svm)
 print("SVM model results:")
 summary(fit1)
-summary(fit1, type = "model")   # extract the underlying glm
+summary(fit1, type = "model")   
 
 # Visualize results
 par(mfrow = c(1, 2))
@@ -42,7 +42,7 @@ fit1 <- ChainLadder::mlReserve(GenIns, fit_func = randomForest::randomForest,
                                predict_func = predict)
 print("RF model results:")
 summary(fit1)
-summary(fit1, type = "model")   # extract the underlying glm
+summary(fit1, type = "model")   
 
 # Visualize results
 par(mfrow = c(1, 2))
@@ -59,7 +59,7 @@ fit1 <- ChainLadder::mlReserve(GenIns, fit_func = glmnet::cv.glmnet,
                                predict_func = predict)
 print("GLMNET model results:")
 summary(fit1)
-summary(fit1, type = "model")   # extract the underlying glm
+summary(fit1, type = "model")   
 
 # Visualize results
 par(mfrow = c(1, 2))
@@ -87,7 +87,7 @@ fit1 <- ChainLadder::mlReserve(GenIns, fit_func = fit_func,
                                predict_func = predict_func)
 print("Ranger model results:")
 summary(fit1)
-summary(fit1, type = "model")   # extract the underlying glm
+summary(fit1, type = "model")   
 
 # Visualize results
 par(mfrow = c(1, 2))
@@ -116,7 +116,7 @@ fit1 <- ChainLadder::mlReserve(GenIns, fit_func = fit_func,
                                predict_func = predict_func)
 print("nnet model results:")
 summary(fit1)
-summary(fit1, type = "model")   # extract the underlying glm
+summary(fit1, type = "model")   
 
 # Optional: Bootstrap example (commented out as it takes longer)
 # set.seed(11)
