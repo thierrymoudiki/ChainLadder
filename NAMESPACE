@@ -117,3 +117,18 @@ S3method(summary, tweedieReserve)
 
 export(PaidIncurredChain)
 export(QuantileIFRS17)
+
+
+# line 2: add .data (used by plot.mlReserve, which = 3)
+importFrom(ggplot2, ggplot, geom_density, facet_wrap, aes, "scale_x_continuous", .data)
+
+# after export(glmReserve)
+export(mlReserve)
+
+# after the glmReserve S3 methods
+S3method(print, mlReserve)
+S3method(summary, mlReserve)
+S3method(residuals, mlReserve)
+S3method(fitted, mlReserve)
+S3method(quantile, mlReserve)
+S3method(plot, mlReserve)
